@@ -1,1 +1,69 @@
-test1
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FizzBuzz問題</title>
+  <style>
+    section {
+      width: 980px;
+      margin: auto;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>FizzBuzz問題</h1>
+    <form>
+      <label for="fizz">FizzNum:</label>
+      <input type="text" id="fizz"><br>
+      <label for="buzz">BuzzNum:</label>
+      <input type="text" id="buzz"><br>
+      <button type="button" onclick="fizzbuzz();">実行</button>
+    </form>
+    <div>
+      <p>【出力】</p>
+      <ul id="result"></ul>
+    </div>
+  </section>
+  <script>
+    function fizzbuzz() {
+      let fizz = parseFloat(document.getElementById('fizz').value);
+      let buzz = parseFloat(document.getElementById('buzz').value);
+      let result = document.getElementById('result');
+      console.log(fizz);
+
+      while(result.lastChild) {
+        result.removeChild(result.lastChild);
+      }
+
+      function listAdd(title, i) {
+        let listItem = document.createElement('li');
+        listItem.innerHTML = title + ' ' + i;
+        result.appendChild(listItem);
+      };
+
+      if(Number.isInteger(fizz) && Number.isInteger(buzz)) {
+        for(i=1; i<100; i++) {
+            if (i%fizz === 0 && i%buzz === 0) {
+              listAdd('fizzbuzz', i);
+            } else if (i%fizz === 0){
+              listAdd('fizz', i);
+            } else if (i%buzz === 0){
+              listAdd('buzz', i);
+            }
+        }
+      } else {
+        listAdd('整数ではありません', '');
+      }
+    };
+  </script>
+</body>
+</html>
