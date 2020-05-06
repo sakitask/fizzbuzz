@@ -43,9 +43,13 @@
       while(result.lastChild) {
         result.removeChild(result.lastChild);
       }
-      function listAdd(title, number = '') {
+      function listAdd(title, number) {
         const listItem = document.createElement('li');
-        listItem.innerHTML = title + ' ' + number;
+        if (number) {
+          listItem.innerHTML = title + ' ' + number;
+        } else {
+          listItem.innerHTML = title;
+        }
         result.appendChild(listItem);
       };
       if (!Number.isNaN(fizzNumber) && !Number.isNaN(buzzNumber)) {
